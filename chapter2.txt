@@ -1,0 +1,450 @@
+Question:
+What are the three main steps of the divide-and-conquer strategy?
+Tag: 2.0 Divide-and-Conquer Strategy
+Answer:
+1. Breaking the problem into smaller subproblems.
+2. Recursively solving the subproblems.
+3. Combining the solutions of the subproblems.
+
+---------
+Question:
+Who noticed that the product of two complex numbers could be done with just three multiplications instead of four?
+Tag: 2.1 Multiplication
+Answer:
+Carl Friedrich Gauss
+
+---------
+Question:
+How can the product of two n-bit integers be rewritten using divide-and-conquer?
+Tag: 2.1 Multiplication
+Answer:
+Given \( x = 2^{n/2} x_L + x_R \) and \( y = 2^{n/2} y_L + y_R \), the product \( xy \) can be rewritten as:
+\[ xy = (2^{n/2} x_L + x_R)(2^{n/2} y_L + y_R) = 2^n x_L y_L + 2^{n/2} (x_L y_R + x_R y_L) + x_R y_R \]
+
+---------
+Question:
+What is the recurrence relation for the initial divide-and-conquer multiplication algorithm?
+Tag: 2.1 Multiplication
+Answer:
+\[ T(n) = 4T(n/2) + O(n) \]
+
+---------
+Question:
+What is Gauss's trick for improving the divide-and-conquer multiplication algorithm?
+Tag: 2.1 Multiplication
+Answer:
+Using the fact that \( x_L y_R + x_R y_L = (x_L + x_R)(y_L + y_R) - x_L y_L - x_R y_R \), reducing the number of multiplications from four to three.
+
+---------
+Question:
+What is the improved recurrence relation using Gauss's trick?
+Tag: 2.1 Multiplication
+Answer:
+\[ T(n) = 3T(n/2) + O(n) \]
+
+---------
+Question:
+What is the running time of the improved divide-and-conquer multiplication algorithm?
+Tag: 2.1 Multiplication
+Answer:
+\[ O(n^{\log_2 3}) \approx O(n^{1.59}) \]
+
+---------
+Question:
+Explain the master theorem for divide-and-conquer recurrences.
+Tag: 2.2 Recurrence Relations
+Answer:
+If \( T(n) = aT(\lceil n/b \rceil) + O(n^d) \) for constants \( a > 0 \), \( b > 1 \), and \( d \ge 0 \), then:
+1. If \( d > \log_b a \), then \( T(n) = O(n^d) \).
+2. If \( d = \log_b a \), then \( T(n) = O(n^d \log n) \).
+3. If \( d < \log_b a \), then \( T(n) = O(n^{\log_b a}) \).
+
+---------
+Question:
+What is the recurrence relation and running time for the binary search algorithm?
+Tag: 2.2 Binary Search
+Answer:
+Recurrence relation: \( T(n) = T(\lceil n/2 \rceil) + O(1) \)
+Running time: \( O(\log n) \)
+
+---------
+Question:
+What is the basic idea behind mergesort?
+Tag: 2.3 Mergesort
+Answer:
+Split the list into two halves, recursively sort each half, and then merge the two sorted sublists.
+
+---------
+Question:
+What is the recurrence relation and running time for mergesort?
+Tag: 2.3 Mergesort
+Answer:
+Recurrence relation: \( T(n) = 2T(n/2) + O(n) \)
+Running time: \( O(n \log n) \)
+
+---------
+Question:
+What is the median of a list of numbers?
+Tag: 2.4 Medians
+Answer:
+The median is the 50th percentile of a list of numbers, meaning half the numbers are bigger than it and half are smaller.
+
+---------
+Question:
+Why is the median considered more typical of the data compared to the mean?
+Tag: 2.4 Medians
+Answer:
+The median is always one of the data values and is less sensitive to outliers compared to the mean.
+
+---------
+Question:
+What is the general selection problem in the context of medians?
+Tag: 2.4 Medians
+Answer:
+Selection problem: Given a list of numbers \( S \) and an integer \( k \), find the \( k \)-th smallest element of \( S \).
+
+---------
+Question:
+What is the basic idea of the divide-and-conquer approach to selection?
+Tag: 2.4 Medians
+Answer:
+Select a pivot \( v \), partition the list into elements smaller than \( v \), elements equal to \( v \), and elements greater than \( v \). Recursively search in the appropriate sublist.
+
+---------
+Question:
+How do you compute the median using the selection algorithm?
+Tag: 2.4 Medians
+Answer:
+To compute the median, use the selection algorithm to find the \( \lfloor |S|/2 \rfloor \)-th smallest element of the list \( S \).
+
+---------
+Question:
+What is the worst-case running time of the basic selection algorithm?
+Tag: 2.4 Medians
+Answer:
+The worst-case running time is \( \Theta(n^2) \).
+
+---------
+Question:
+How can the selection algorithm be made efficient on average?
+Tag: 2.4 Medians
+Answer:
+By choosing the pivot \( v \) randomly, the average running time of the selection algorithm can be \( O(n) \).
+
+---------
+Question:
+Explain the term "good" pivot in the context of the selection algorithm.
+Tag: 2.4 Medians
+Answer:
+A pivot \( v \) is considered "good" if it lies within the 25th to 75th percentile of the array, ensuring that the sublists \( S_L \) and \( S_R \) have size at most three-fourths that of \( S \).
+
+---------
+Question:
+What is the recurrence relation for the expected running time of the selection algorithm?
+Tag: 2.4 Medians
+Answer:
+\[ T(n) \leq T(3n/4) + O(n) \]
+
+---------
+Question:
+What is the expected running time of the selection algorithm?
+Tag: 2.4 Medians
+Answer:
+The expected running time is \( O(n) \).
+
+---------
+Question:
+Describe the matrix multiplication problem.
+Tag: 2.5 Matrix Multiplication
+Answer:
+Given two \( n \times n \) matrices \( X \) and \( Y \), compute their product \( Z = XY \), where \( Z_{ij} = \sum_{k=1}^n X_{ik} Y_{kj} \).
+
+---------
+Question:
+What is the basic \( O(n^3) \) algorithm for matrix multiplication?
+Tag: 2.5 Matrix Multiplication
+Answer:
+Compute each entry \( Z_{ij} \) of the product matrix \( Z \) as the dot product of the \( i \)-th row of \( X \) and the \( j \)-th column of \( Y \).
+
+---------
+Question:
+Explain the blockwise strategy for matrix multiplication.
+Tag: 2.5 Matrix Multiplication
+Answer:
+Partition the matrices \( X \) and \( Y \) into four \( n/2 \times n/2 \) blocks and recursively compute the products of these blocks.
+
+---------
+Question:
+What is Strassen's algorithm for matrix multiplication?
+Tag: 2.5 Matrix Multiplication
+Answer:
+Strassen's algorithm reduces the number of recursive multiplications from eight to seven by using a clever combination of additions and subtractions:
+\[ P_1 = A(F - H) \]
+\[ P_2 = (A + B)H \]
+\[ P_3 = (C + D)E \]
+\[ P_4 = D(G - E) \]
+\[ P_5 = (A + D)(E + H) \]
+\[ P_6 = (B - D)(G + H) \]
+\[ P_7 = (A - C)(E + F) \]
+\[ Z_{11} = P_5 + P_4 - P_2 + P_6 \]
+\[ Z_{12} = P_1 + P_2 \]
+\[ Z_{21} = P_3 + P_4 \]
+\[ Z_{22} = P_1 + P_5 - P_3 - P_7 \]
+
+---------
+Question:
+What is the recurrence relation and running time for Strassen's algorithm?
+Tag: 2.5 Matrix Multiplication
+Answer:
+Recurrence relation: \( T(n) = 7T(n/2) + O(n^2) \)
+Running time: \( O(n^{\log_2 7}) \approx O(n^{2.81}) \)
+
+---------
+Question:
+What is the fast Fourier transform (FFT) used for in the context of polynomial multiplication?
+Tag: 2.6 The Fast Fourier Transform
+Answer:
+The FFT is used to efficiently evaluate and interpolate polynomials, enabling fast polynomial multiplication.
+
+---------
+Question:
+Explain the fact that a degree-\( d \) polynomial is uniquely characterized by its values at \( d+1 \) distinct points.
+Tag: 2.6.1 Alternative Representation of Polynomials
+Answer:
+A degree-\( d \) polynomial can be represented by either its coefficients \( a_0, a_1, \ldots, a_d \) or its values at \( d+1 \) distinct points \( A(x_0), A(x_1), \ldots, A(x_d) \).
+
+---------
+Question:
+What is the high-level algorithm for multiplying two polynomials using the FFT?
+Tag: 2.6.1 Alternative Representation of Polynomials
+Answer:
+1. Select \( n \geq 2d+1 \) points.
+2. Evaluate the polynomials at these points.
+3. Multiply the resulting values pointwise.
+4. Use interpolation to convert the result back to the coefficient representation.
+
+---------
+Question:
+What is the running time of the FFT?
+Tag: 2.6.2 Evaluation by Divide-and-Conquer
+Answer:
+The running time of the FFT is \( O(n \log n) \).
+
+---------
+Question:
+What are the complex \( n \)-th roots of unity and why are they important for the FFT?
+Tag: 2.6.2 Evaluation by Divide-and-Conquer
+Answer:
+The complex \( n \)-th roots of unity are the \( n \) complex solutions to \( z^n = 1 \), specifically \( 1, \omega, \omega^2, \ldots, \omega^{n-1} \) where \( \omega = e^{2\pi i/n} \). They allow efficient evaluation and interpolation of polynomials using the FFT.
+
+---------
+Question:
+Describe the relationship between the FFT and the inverse FFT.
+Tag: 2.6.3 Interpolation
+Answer:
+The FFT transforms a polynomial from the coefficient representation to the value representation. The inverse FFT (IFFT) performs the reverse operation, converting from the value representation back to the coefficient representation. The IFFT can be computed using the same FFT algorithm with the complex conjugate of the roots of unity, scaled by \( 1/n \).
+
+---------
+Question:
+What is the fundamental observation about the columns of the matrix used in the FFT?
+Tag: 2.6.3 Interpolation
+Answer:
+The columns of the matrix used in the FFT are orthogonal to each other.
+
+---------
+Question:
+What is the inversion formula for the matrix used in the FFT?
+Tag: 2.6.3 Interpolation
+Answer:
+\[ M_n(\omega)^{-1} = \frac{1}{n} M_n(\omega^{-1}) \]
+
+---------
+Question:
+What does the fast Fourier transform (FFT) algorithm compute?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The FFT computes the discrete Fourier transform (DFT) of a sequence, converting it from the time domain to the frequency domain.
+
+---------
+Question:
+Explain the divide-and-conquer step in the FFT.
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The divide-and-conquer step in the FFT splits the polynomial into its even and odd coefficients, recursively evaluates them at the appropriate roots of unity, and combines the results using the butterfly operation.
+
+---------
+Question:
+What is the recurrence relation and running time for the FFT?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+Recurrence relation: \( T(n) = 2T(n/2) + O(n) \)
+Running time: \( O(n \log n) \)
+
+---------
+Question:
+Describe the butterfly operation in the FFT.
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The butterfly operation combines the results of the even and odd indexed evaluations, using the formula:
+\[ r_j = s_j + \omega^j s'_j \]
+\[ r_{j + n/2} = s_j - \omega^j s'_j \]
+
+---------
+Question:
+What is the role of complex numbers in the FFT?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+Complex numbers, specifically the \( n \)-th roots of unity, allow the FFT to efficiently perform the necessary polynomial evaluations and interpolations by leveraging their orthogonal properties.
+
+---------
+Question:
+How is the FFT related to polynomial multiplication?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The FFT allows polynomial multiplication to be performed efficiently by converting the polynomials to their value representations, multiplying the values pointwise, and then using the inverse FFT to convert back to the coefficient representation.
+
+---------
+Question:
+What is the historical significance of the FFT algorithm?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The FFT algorithm, rediscovered by Cooley and Tukey in 1965, has significant applications in various fields such as signal processing and was independently used by British engineers in the 1930s and hinted at by Gauss in the early 1800s.
+
+---------
+Question:
+Explain the relationship between the FFT and signal processing.
+Tag: 2.6 The Fast Fourier Transform
+Answer:
+In signal processing, the FFT is used to transform signals from the time domain to the frequency domain, making it easier to analyze and manipulate them. It is crucial for operations like filtering, compression, and feature extraction.
+
+---------
+Question:
+How does the FFT facilitate polynomial multiplication faster than \( \Theta(d^2) \)?
+Tag: 2.6 The Fast Fourier Transform
+Answer:
+The FFT reduces the complexity of polynomial multiplication by evaluating the polynomials at specific points (roots of unity), multiplying these evaluations, and then interpolating the result back to the coefficient form, all in \( O(n \log n) \) time.
+
+---------
+Question:
+What is the geometric interpretation of the FFT?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The FFT can be viewed as a change of basis in the vector space, rotating the polynomial coefficients into the Fourier basis defined by the roots of unity, allowing for efficient multiplication and other operations.
+
+---------
+Question:
+What is the connection between the FFT and the inverse FFT in polynomial operations?
+Tag: 2.6.3 Interpolation
+Answer:
+The FFT converts polynomials to their value representation using the roots of unity, while the inverse FFT converts them back to the coefficient representation using the inverse roots of unity, scaled by \( 1/n \).
+
+---------
+Question:
+What is the general form of the recurrence relation for divide-and-conquer algorithms?
+Tag: 2.2 Recurrence Relations
+Answer:
+The general form of the recurrence relation is:
+\[ T(n) = aT\left(\frac{n}{b}\right) + f(n) \]
+where \( a \) is the number of subproblems, \( n/b \) is the size of each subproblem, and \( f(n) \) is the cost outside the recursive calls.
+
+---------
+Question:
+How does the Master Theorem help in solving recurrence relations?
+Tag: 2.2 Recurrence Relations
+Answer:
+The Master Theorem provides a straightforward way to determine the asymptotic behavior of recurrences of the form \( T(n) = aT(n/b) + f(n) \) by comparing \( f(n) \) with \( n^{\log_b a} \).
+
+---------
+Question:
+What are the three cases of the Master Theorem and their implications?
+Tag: 2.2 Recurrence Relations
+Answer:
+1. If \( f(n) = O(n^c) \) where \( c < \log_b a \), then \( T(n) = \Theta(n^{\log_b a}) \).
+2. If \( f(n) = \Theta(n^{\log_b a}) \), then \( T(n) = \Theta(n^{\log_b a} \log n) \).
+3. If \( f(n) = \Omega(n^c) \) where \( c > \log_b a \), and if \( af(n/b) \leq kf(n) \) for some \( k < 1 \) and sufficiently large \( n \), then \( T(n) = \Theta(f(n)) \).
+
+---------
+Question:
+Describe how binary search works and its time complexity.
+Tag: 2.2 Binary Search
+Answer:
+Binary search works by repeatedly dividing a sorted array in half and comparing the target value to the middle element, eliminating half of the remaining elements each time. The time complexity is \( O(\log n) \).
+
+---------
+Question:
+What is the key operation in the merge step of mergesort?
+Tag: 2.3 Mergesort
+Answer:
+The key operation in the merge step is to combine two sorted subarrays into a single sorted array in linear time.
+
+---------
+Question:
+What is the space complexity of mergesort?
+Tag: 2.3 Mergesort
+Answer:
+The space complexity of mergesort is \( O(n) \) due to the auxiliary space required for the temporary arrays used in the merge step.
+
+---------
+Question:
+How does the selection algorithm ensure an average-case linear time complexity?
+Tag: 2.4 Medians
+Answer:
+By randomly choosing a pivot and ensuring that with high probability the pivot divides the list into reasonably balanced sublists, leading to an average-case time complexity of \( O(n) \).
+
+---------
+Question:
+What is the significance of the recurrence relation \( T(n) = T(n-1) + O(1) \)?
+Tag: 2.2 Recurrence Relations
+Answer:
+This recurrence relation describes an algorithm that processes one element at a time in constant time, leading to a time complexity of \( O(n) \).
+
+---------
+Question:
+What is the benefit of using divide-and-conquer for matrix multiplication?
+Tag: 2.5 Matrix Multiplication
+Answer:
+Divide-and-conquer reduces the problem size recursively and can lead to more efficient algorithms like Strassen's algorithm, which improves the time complexity over the naive \( O(n^3) \) approach.
+
+---------
+Question:
+Why is it important to choose the points \( x_0, x_1, \ldots, x_{n-1} \) as the roots of unity in the FFT?
+Tag: 2.6.2 Evaluation by Divide-and-Conquer
+Answer:
+Choosing the points as the roots of unity simplifies the polynomial evaluation and interpolation processes, allowing the FFT to efficiently compute the discrete Fourier transform in \( O(n \log n) \) time.
+
+---------
+Question:
+Explain the process of polynomial interpolation using the inverse FFT.
+Tag: 2.6.3 Interpolation
+Answer:
+Polynomial interpolation using the inverse FFT involves computing the inverse discrete Fourier transform of the value representation of the polynomial, effectively converting it back to the coefficient representation.
+
+---------
+Question:
+What is the time complexity of polynomial multiplication using the FFT?
+Tag: 2.6 The Fast Fourier Transform
+Answer:
+The time complexity of polynomial multiplication using the FFT is \( O(n \log n) \), significantly faster than the naive \( O(n^2) \) approach.
+
+---------
+Question:
+What is the impact of the fast Fourier transform on signal processing?
+Tag: 2.6 The Fast Fourier Transform
+Answer:
+The FFT revolutionized signal processing by enabling efficient computation of the discrete Fourier transform, which is essential for tasks like filtering, compression, and spectral analysis.
+
+---------
+Question:
+Describe the historical development of the FFT algorithm.
+Tag: 2.6 The Fast Fourier Transform
+Answer:
+The FFT algorithm was popularized by Cooley and Tukey in 1965, although the concept dates back to Gauss in the early 1800s and was used by British engineers in the 1930s.
+
+---------
+Question:
+Why is the FFT circuit described as naturally suited for parallel computation?
+Tag: 2.6.4 The Fast Fourier Transform Unraveled
+Answer:
+The FFT circuit has a regular structure with repeated patterns of operations (butterflies), making it easy to parallelize and implement in hardware for efficient computation.
+
+---------
