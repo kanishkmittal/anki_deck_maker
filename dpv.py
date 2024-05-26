@@ -26,7 +26,7 @@ for block in blocks:
     if question and tag and answer:
         # Clean up the strings
         question_clean = question.group(1).strip()
-        tag_clean = tag.group(1).strip()
+        tag_clean = tag.group(1)
         answer_clean = answer.group(1)  # Remove the strip() method to retain formatting
 
         # Append the tuple to the list
@@ -75,6 +75,6 @@ for question, answer, tag in questions_tuple:
     my_deck.add_note(note)
 
 # Save the deck to a file
-genanki.Package(my_deck).write_to_file('outpu2.apkg')
+genanki.Package(my_deck).write_to_file('DPV_ch2.apkg')
 
 print("Deck has been created and exported as output.apkg.")
